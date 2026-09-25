@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# Gesticar Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Demo frontend SaaS/ERP para compraventas de vehículos de ocasión.
 
-Currently, two official plugins are available:
+## Arranque
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cd ~/Projects/autostock-erp
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Abre http://localhost:5174/
+
+## Demo
+
+- Producto: **Gesticar Online**
+- Empresa: **Motor Canarias Premium** (Santa Cruz de Tenerife)
+- Usuario: Alejandro Martín (Administrador)
+- Login visual (opcional): `/login` → demo@gesticaronline.es / demo123
+
+## Flujo recomendado para presentar
+
+1. Dashboard — stock, capital inmovilizado, margen potencial
+2. Inventario — coches con +90 días (alerta)
+3. Ficha BMW 320d — compra + gastos = coste real, margen
+4. Añadir gasto de taller → ver cómo baja el margen
+5. Simular precio / publicar web
+6. Registrar venta → volver al Dashboard actualizado
+
+## Notas
+
+- Sin backend: datos mock + `localStorage`
+- Resetear demo: Configuración → Resetear demo
+- Nombre del producto configurable en `src/config/app.ts`
