@@ -1,6 +1,8 @@
 import type {
   ActivityItem,
   AppState,
+  CompanyProfile,
+  ContractTemplate,
   Lead,
   Reservation,
   Sale,
@@ -9,6 +11,7 @@ import type {
   VehicleDocument,
   VehicleExpense,
 } from '@/types'
+import { DEALERSHIP } from '@/config/app'
 import { uid } from '@/lib/utils'
 
 function docs(overrides?: Partial<VehicleDocument>[]): VehicleDocument[] {
@@ -782,6 +785,34 @@ export const seedActivity: ActivityItem[] = [
   { id: 'a08', text: 'Peugeot 3008 enviado a preparación', at: '2026-08-08T12:00:00.000Z', vehicleId: 'v11' },
 ]
 
+export const seedCompany: CompanyProfile = {
+  name: DEALERSHIP.name,
+  cif: DEALERSHIP.cif,
+  phone: DEALERSHIP.phone,
+  email: DEALERSHIP.email,
+  web: DEALERSHIP.web,
+  address: DEALERSHIP.address,
+  location: DEALERSHIP.location,
+  invoiceSeries: 'F',
+  verifactuEnabled: true,
+}
+
+export const seedContractTemplates: ContractTemplate[] = [
+  {
+    id: 'tpl01',
+    name: 'Contrato de compraventa particular',
+    isDefault: true,
+    updatedAt: '2026-08-01T10:00:00.000Z',
+    body: `CONTRATO DE COMPRAVENTA DE VEHÍCULO
+
+Entre {{empresa}} (CIF {{cif}}), con domicilio en {{direccion}}, y {{cliente}} (NIF {{nif_cliente}}).
+
+Vehículo: {{vehiculo}} · Matrícula {{matricula}} · Precio {{precio}} €.
+
+Ambas partes aceptan las condiciones de entrega y garantía según la legislación vigente.`,
+  },
+]
+
 export const seedState: AppState = {
   vehicles: seedVehicles,
   sales: seedSales,
@@ -789,4 +820,8 @@ export const seedState: AppState = {
   reservations: seedReservations,
   tasks: seedTasks,
   activity: seedActivity,
+  invoices: [],
+  contractTemplates: seedContractTemplates,
+  contracts: [],
+  company: seedCompany,
 }
